@@ -1,0 +1,38 @@
+﻿<Window x:Class="S.F.Pass"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:S.F"
+
+         Height="400" Width="600" Icon="Image/Lg.jpg" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown">
+    <Grid Background="#FF04101C">
+        <Grid Margin="30" TextBlock.FontSize="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <local:GlowFrame Foreground="Cyan" CornerRadius="15" Grid.RowSpan="7"/>
+            <Grid Grid.Row="1" Margin="20,0">
+                <local:GlowFrame Foreground="Violet" CornerRadius="8"/>
+                <TextBox x:Name="Username" Text="Username" Foreground="Violet" Margin="13,18,16,16" IsTabStop="False"
+                           VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="32" PreviewMouseLeftButtonDown="Username_MouseEnter" KeyDown="Username_KeyDown"/>
+            </Grid>
+            <Grid Grid.Row="3" Margin="20,0">
+                <local:GlowFrame Foreground="Violet" CornerRadius="8"/>
+                <TextBox x:Name="Password" Text="Password" Foreground="Violet" Margin="13,18,16,16" IsTabStop="False"
+                           VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="32" PreviewMouseLeftButtonDown="Password_MouseEnter" KeyDown="Password_KeyDown"/>
+            </Grid>
+            <Grid Grid.Row="4" Margin="20,18,20,0" Grid.RowSpan="2">
+                <local:GlowFrame Foreground="Red" CornerRadius="8" PreviewMouseLeftButtonDown="GlowFrame_PreviewMouseLeftButtonDown" Margin="0,-7,0,0"/>
+                <TextBlock Foreground="Red" Margin="19,5,18,13"
+                          VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="GlowFrame_PreviewMouseLeftButtonDown" Height="80" Width="455" TextAlignment="Center"><Run/><LineBreak/><Run Text="LOGIN"/></TextBlock>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

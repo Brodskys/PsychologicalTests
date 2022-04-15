@@ -1,0 +1,108 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:S.F"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Name="forms" x:Class="S.F.Test_Sondi"
+        mc:Ignorable="d" Height="460.633" Width="643.445" ResizeMode="CanMinimize" Icon="Image/Lg.jpg" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Background="White" KeyDown="Forms_KeyDown">
+    <Grid Height="432" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="608*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="241*"/>
+            <RowDefinition Height="165*"/>
+            <RowDefinition Height="26*"/>
+        </Grid.RowDefinitions>
+        <RichTextBox x:Name="Text_Sondi" HorizontalAlignment="Left" IsReadOnly="True"  Height="436" VerticalAlignment="Top" Width="637" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" Margin="0,-3,0,-1" Grid.RowSpan="3" Grid.ColumnSpan="3">
+            <FlowDocument>
+                <Paragraph Padding="13,0,20,0" TextAlignment="Center">
+                    <Run FontSize="18" FontFamily="Showcard Gothic" Text=""/>
+                </Paragraph>
+                <Paragraph LineHeight="6" Padding="13,0,20,0" TextIndent="20">
+                    <Run FontSize="14" Text="Перед вами будут разложены восемь портретов. Рассмотрите их внимательно. "/>
+                </Paragraph>
+                <Paragraph LineHeight="6" Padding="13,0,20,0" TextIndent="20">
+                    <Run FontSize="14" Text="Сперва выберите тот, который вы, хотя бы относительно, предпочитаете всем остальным, а затем тот, который покажется наиболее симпатичным среди оставшихся. "/>
+                </Paragraph>
+                <Paragraph LineHeight="6" Padding="13,0,20,0">
+                    <Run FontSize="14" Text="Возможно, вам не понравится ни один портрет, тогда выберите два наименее неприятных."/>
+                </Paragraph>
+                <Paragraph LineHeight="6" Padding="13,0,20,0" TextIndent="20">
+                    <Run FontSize="14" Text="Затем вам будет предложено выбрать два портрета, которые вам наиболее неприятны. "/>
+                </Paragraph>
+                <Paragraph LineHeight="6" Padding="13,0,20,0">
+                    <Run FontSize="14" Text="Не тратьте слишком много времени на раздумья, важна ваша первая непосредственная реакция. "/>
+                </Paragraph>
+                <Paragraph Padding="13,0,20,0"/>
+            </FlowDocument>
+        </RichTextBox>
+        <Button x:Name="Start" Content=" НАЧАТЬ ТЕСТИРОВАНИЕ " Height="48" Width="184" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" Margin="190,107,234,10" Visibility="Hidden" Grid.Row="1" Grid.Column="1"/>
+        <Image x:Name="_1" HorizontalAlignment="Left" Height="147" Margin="1,88,0,0" VerticalAlignment="Top" Width="121" Source="Image/Test Sondi/1.1.png" Grid.Column="1" PreviewMouseLeftButtonDown="_1_PreviewMouseLeftButtonDown" Visibility="Hidden"/>
+        <TextBlock HorizontalAlignment="Left" Margin="104,5,0,0" TextWrapping="Wrap" Text="Тест Сонди / Метод портретных выборов" VerticalAlignment="Top" FontSize="18" FontFamily="Blackoak Std" FontWeight="Bold" Height="22" Width="398" Grid.Column="1"/>
+        <TextBlock x:Name="Zadanie" HorizontalAlignment="Left" Margin="1,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontFamily="Tempus Sans ITC" Width="636" Height="55" Grid.ColumnSpan="3" Visibility="Hidden"><Run Text="Выберите, пожалуйста, два наиболее "/><Run FontWeight="Bold" Text="приятных или симпатичных "/><Run Text="портрета из лежащих перед вами. Если не нравится ни один из них, то выберите два наименее неприятных."/></TextBlock>
+        <Image x:Name="_2" HorizontalAlignment="Left" Height="145" Margin="154,88,0,0" VerticalAlignment="Top" Width="121" Source="Image/Test Sondi/1.2.png" Grid.Column="1" PreviewMouseLeftButtonDown="_2_PreviewMouseLeftButtonDown" Visibility="Hidden"/>
+        <Image x:Name="_3" HorizontalAlignment="Left" Height="146" VerticalAlignment="Top" Width="121" Source="Image/Test Sondi/1.3.png" Grid.Column="1" PreviewMouseLeftButtonDown="_3_PreviewMouseLeftButtonDown" Margin="330,88,0,0" Visibility="Hidden"/>
+        <Image x:Name="_4" HorizontalAlignment="Left" Height="144" Margin="487,89,0,0" VerticalAlignment="Top" Width="121" Source="Image/Test Sondi/1.4.png" Grid.Column="1" PreviewMouseLeftButtonDown="_4_PreviewMouseLeftButtonDown" Visibility="Hidden"/>
+        <Image x:Name="_5" HorizontalAlignment="Left" Height="163" Margin="2,2,0,0" VerticalAlignment="Top" Width="121" Source="Image/Test Sondi/1.5.png" Grid.Row="1" RenderTransformOrigin="0.427,0.494" Grid.Column="1" PreviewMouseLeftButtonDown="_5_PreviewMouseLeftButtonDown" Visibility="Hidden"/>
+        <Image x:Name="_6" HorizontalAlignment="Left" Height="163" Margin="156,1,0,0" VerticalAlignment="Top" Width="118" Source="Image/Test Sondi/1.6.png" Grid.Row="1" Grid.Column="1" PreviewMouseLeftButtonDown="_6_PreviewMouseLeftButtonDown" Visibility="Hidden"/>
+        <Image x:Name="_7" HorizontalAlignment="Left" Height="162" Margin="330,1,0,0" VerticalAlignment="Top" Width="121" Source="Image/Test Sondi/1.7.png" Grid.Row="1" Grid.Column="1" PreviewMouseLeftButtonDown="_7_PreviewMouseLeftButtonDown" Visibility="Hidden"/>
+        <Image x:Name="_8" HorizontalAlignment="Left" Height="162" Margin="485,1,0,0" VerticalAlignment="Top" Width="122" Source="Image/Test Sondi/1.8.png" Grid.Row="1" Grid.Column="1" PreviewMouseLeftButtonDown="_8_PreviewMouseLeftButtonDown" Visibility="Hidden"/>
+        <TextBlock x:Name="Zadanie2" HorizontalAlignment="Left" Margin="1,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontFamily="Tempus Sans ITC" Width="627" Height="55" Grid.ColumnSpan="3" Visibility="Hidden"><Run Text="Выберите, пожалуйста, два "/><Run FontWeight="Bold" Text="самых неприятных, несимпатичных"/><Run Text=" портрета из лежащих перед вами."/></TextBlock>
+        <TextBlock x:Name="res_text" HorizontalAlignment="Left" Margin="173,27,0,0" TextWrapping="Wrap" Text="Результаты тестирования:" VerticalAlignment="Top" FontSize="18" FontFamily="Blackoak Std" FontWeight="Bold" Height="22" Width="232" Grid.Column="1"/>
+
+        <RichTextBox x:Name="res_rich" Grid.Column="1" VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Height="373" Margin="10,60,0,-1" ScrollViewer.VerticalScrollBarVisibility="Auto" Focusable="False" Width="588" Grid.RowSpan="3" BorderBrush="{x:Null}" Visibility="Hidden">
+            <FlowDocument>
+                <Paragraph>
+                    <Run  FontFamily="Century Gothic"  Text="1. Биологические предпосылки"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run x:Name="Text_1" Text=""/>
+                </Paragraph>
+                <Paragraph>
+                    <Run  FontFamily="Century Gothic" Text="2. Конституциональный тип"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run x:Name="Text_2"  Text=""/>
+                </Paragraph>
+                <Paragraph>
+                    <Run  FontFamily="Century Gothic" Text="3. Характерологические особенности"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run x:Name="Text_3"  Text=""/>
+                </Paragraph>
+                <Paragraph>
+                    <Run  FontFamily="Century Gothic" Text="4. Личностные свойства"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run x:Name="Text_4"  Text=""/>
+                </Paragraph>
+                <Paragraph>
+                    <Run  FontFamily="Century Gothic" Text="5. Выбор профессии"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run x:Name="Text_5"  Text=""/>
+                </Paragraph>
+                <Paragraph>
+                    <Run  FontFamily="Century Gothic" Text="6. Социальная активность"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run x:Name="Text_6"  Text=""/>
+                </Paragraph>
+                <Paragraph>
+                    <Run  FontFamily="Century Gothic" Text="7. Болезненная деформация влечения"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run x:Name="Text_7"  Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <StackPanel x:Name="lev" Grid.Column="1" HorizontalAlignment="Left" Height="387" Margin="8,51,0,-6" VerticalAlignment="Top" Width="4" Grid.RowSpan="3" Background="White"/>
+        <StackPanel x:Name="prav" HorizontalAlignment="Left" Height="384" Margin="596,51,0,-3" VerticalAlignment="Top" Width="4" Grid.RowSpan="3" Grid.Column="1" Background="White"/>
+        <StackPanel x:Name="verh" HorizontalAlignment="Left" Height="5" Margin="9,58,0,0" VerticalAlignment="Top" Width="590" Grid.Column="1" Background="White"/>
+
+    </Grid>
+</Window>

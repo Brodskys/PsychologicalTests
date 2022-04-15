@@ -1,0 +1,1723 @@
+﻿<Window x:Class="S.F.Eysenck_tempr"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:S.F"
+        mc:Ignorable="d" Height="709.22" Width="776.818" Icon="Image/Lg.jpg" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+
+    <Window.Resources>
+
+        <Style x:Key="{x:Type ListBox}" TargetType="ListBox">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="MinHeight" Value="95"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Border 
+          Name="Border" 
+
+          BorderThickness="1"
+          CornerRadius="2">
+                            <ScrollViewer 
+            Margin="0"
+            Focusable="false">
+                                <StackPanel Margin="2" IsItemsHost="True" />
+                            </ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsGrouping" Value="true">
+                                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border 
+          Name="Border"
+          Padding="2"
+          SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style x:Key="DefaultButtonStyle"
+           TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type Image}" x:Key="BottomButtonsStyle">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Opacity" Value="0.4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type ToggleButton}" x:Key="Toggle">
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"                  
+                                VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Height" Value="25"/>
+                    <Setter Property="Width" Value="25"/>
+                    <Setter Property="Opacity" Value="0.5"/>
+                </Trigger>
+
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Opacity" Value="0.4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="SliderRepeatButton1" TargetType="{x:Type RepeatButton}">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border SnapsToDevicePixels="True" Height="5">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White" Offset="0.5"/>
+                                    <GradientStop Color="#FF272727" Offset="1"/>
+                                    <GradientStop Color="#FF272727" Offset="0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SliderRepeatButton" TargetType="{x:Type RepeatButton}">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="IsTabStop" Value="false" />
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border Background="Black" Height="3"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SliderThumb" TargetType="{x:Type Thumb}">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Ellipse Height="10" Width="10">
+                            <Ellipse.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFC5C3C3" Offset="0.091"/>
+                                    <GradientStop Color="#FF838383" Offset="0.509"/>
+                                    <GradientStop Color="#FFC5C3C3" Offset="0.917"/>
+                                </LinearGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="Slider"  TargetType="{x:Type Slider}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Track Grid.Row="1" x:Name="PART_Track"   >
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource SliderRepeatButton1}"  Command="Slider.DecreaseLarge" />
+                    </Track.DecreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource SliderThumb}"  />
+                    </Track.Thumb>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource SliderRepeatButton}" Command="Slider.IncreaseLarge" />
+                    </Track.IncreaseRepeatButton>
+                </Track>
+            </Grid>
+        </ControlTemplate>
+        <Style x:Key="Horizontal_Slider" TargetType="{x:Type Slider}">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Horizontal">
+                    <Setter Property="MinHeight" Value="21" />
+                    <Setter Property="MinWidth" Value="104" />
+                    <Setter Property="Template" Value="{StaticResource Slider}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid x:Name="gr">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <RichTextBox x:Name="Text_Eysenck" HorizontalAlignment="Left" IsReadOnly="True"  Height="689" VerticalAlignment="Top" Width="778" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" Margin="-4,-4,-3,-5" FontFamily="Stencil" FontSize="16" Visibility="Hidden">
+            <FlowDocument>
+                <Paragraph LineHeight="1" Padding="13,0,20,0" TextAlignment="Justify">
+                    <Run Text=""/>
+                </Paragraph>
+                <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                    <Run/>
+                </Paragraph>
+                <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                    <Run/>
+                </Paragraph>
+                <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                    <Run Text="Перед вами будут разложены восемь портретов. Рассмотрите их внимательно. Сперва выберите тот, который вы, хотя бы относительно, предпочитаете всем остальным, а затем тот, который покажется наиболее симпатичным среди оставшихся. Возможно, вам не понравится ни один портрет, тогда выберите два наименее неприятных. Затем вам будет предложено выбрать два портрета, которые вам наиболее неприятны. Не тратьте слишком много времени на раздумья, важна ваша первая непосредственная реакция. "/>
+                    <Run Text=" "/>
+                    <Run Text=" "/>
+                </Paragraph>
+                <Paragraph LineHeight="1" Padding="13,0,20,0" TextAlignment="Justify"/>
+            </FlowDocument>
+        </RichTextBox>
+        <TextBlock TextWrapping="Wrap" Text="Тест Айзенка на определение типа темперамента" VerticalAlignment="Bottom" Margin="186,0,0,650" Height="22" FontSize="18" FontWeight="Bold" FontFamily="Blackoak Std" HorizontalAlignment="Left" Width="442"/>
+        <ListBox x:Name="Questions" HorizontalAlignment="Left" Height="604" Margin="31,30,0,0" VerticalAlignment="Top" Width="707" ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderBrush="{x:Null}" ScrollViewer.VerticalScrollBarVisibility="Hidden" Visibility="Hidden" FontSize="16" FontFamily="Stencil"/>
+        <TextBlock x:Name="CompleteAnswer" HorizontalAlignment="Left" Margin="12,10,-4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="397" Width="763" d:IsHidden="True"/>
+
+
+
+
+        <Button x:Name="End" Content=" ПОКАЗАТЬ РЕЗУЛЬТАТ " Height="36" Width="174" HorizontalAlignment="Center" Margin="283,637,314,7" VerticalAlignment="Center" BorderBrush="{x:Null}"  Visibility="Hidden" Click="End_Click"/>
+
+        <Button x:Name="Start" Content=" НАЧАТЬ ТЕСТИРОВАНИЕ " Height="48" Width="184" HorizontalAlignment="Center" Margin="307,604,280,28" VerticalAlignment="Center" BorderBrush="{x:Null}" Click="Start_Click" Visibility="Hidden"/>
+        <Grid x:Name="r_t" HorizontalAlignment="Left" Height="681" VerticalAlignment="Top" Width="775" Margin="-1,-2,-3,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ложь:" VerticalAlignment="Top" Margin="22,53,0,0" FontSize="20" FontFamily="Stencil" Height="24" Width="57" Focusable="True"/>
+            <TextBlock x:Name="lsh1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" FontFamily="Stencil" Margin="21,80,0,0" Text="   Неискренность в ответах, свидетельствующая также о некоторой демонстративности поведения и ориентированности испытуемого на социальное одобрение." Width="733" Height="71" Focusable="True"/>
+            <TextBlock Text="Вы" TextWrapping="Wrap" FontSize="20" RenderTransformOrigin="-0.222,0.538" Focusable="True" Margin="23,159,725,500"/>
+            <TextBlock x:Name="t_l" TextWrapping="Wrap" TextDecorations="Underline" Foreground="#FF0DBE98" PreviewMouseLeftButtonDown="T_l_PreviewMouseLeftButtonDown" Text="Экстраверт" Margin="56,163,614,496" FontSize="20" FontFamily="Stencil" RenderTransformOrigin="0.105,0.259" MouseEnter="T_l_MouseEnter" MouseLeave="T_l_MouseLeave"/>
+            <TextBlock TextWrapping="Wrap" Text="и ваш тип темперамента" Margin="170,163,379,499" FontSize="20" FontFamily="Stencil"/>
+            <TextBlock x:Name="t_t" TextWrapping="Wrap" Text="Флегматик" TextDecorations="Underline" Foreground="#FF0DBE98" FontSize="20" FontFamily="Stencil" Margin="401,163,266,496" MouseEnter="T_T_MouseEnter" MouseLeave="T_T_MouseLeave" PreviewMouseLeftButtonDown="T_T_PreviewMouseLeftButtonDown" />
+            <RichTextBox x:Name="Ekst_text" HorizontalAlignment="Left" IsReadOnly="True"  Height="689" VerticalAlignment="Top" Width="778" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="White" Margin="-4,-4,0,-4" FontFamily="Stencil" FontSize="16" Visibility="Hidden">
+                <FlowDocument>
+                    <Paragraph LineHeight="1" Padding="46,0,20,0" TextAlignment="Justify">
+                        <Run Text=""/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" Text="Кто такой "/>
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="экстраверт"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Экстраверт — это тип личности, направленный на "/>
+                        <Run FontWeight="Bold" Text="взаимодействие с окружающим миром"/>
+                        <Run Text=". В отличие от интроверта он не может долго усидеть на одном месте, ему не интересны самоанализ и щепетильный разбор полетов. Экстраверт не зацикливается на обидах или неудачах, очень быстро забывает плохое и сломя голову несется дальше."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="На первый взгляд, жизнь таких людей намного более насыщенная и интересная, чем у их «оппонентов» – интровертов. Тем более, что экстравертов больше – порядка 70% мирового населения. В этом заключается главный парадокс. Если проанализировать основную массу известных лидеров, то экстраверты и интроверты встречаются среди них практически поровну. Учитывая, что первых больше, выходит так, что процент успешных людей среди них не велик. Почему так происходит? Опять же из-за излишней открытости экстравертов, определенной поверхностности и неусидчивости."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Экстраверт и интроверт"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Чистые психотипы встречаются не так уж и часто. В большинстве случаев человек объединяет в себе оба типа личности, просто в различные периоды жизни преобладает один из них. Таким образом, основная масса людей склонна к экстраверсии и к интроверсии. Например, в детстве они открытые и общительные, а во взрослые годы становятся более закрытыми. Или, наоборот, тихая и застенчивая школьница превращается в звезду шоу-бизнеса, собирающую многотысячные стадионы."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Но это не значит, что интроверт становится экстравертом. Ведь тип личности, подобно темпераменту, "/>
+                        <Run FontWeight="Bold" Text="закладывается еще до рождения ребенка"/>
+                        <Run Text=". Он имеет довольно четкие физиологические отличия. Например, у экстравертов лучше развита симпатическая нервная система, которая отвечает за активность. Для интровертов, наоборот, свойственно влияние парасимпатической нервной системы, обуславливающей спокойствие."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" Text="В отличие от характера"/>
+                        <Run Text=", который корректируется всю жизнь, психотип не меняется. Точнее практически не меняется. Просто, поскольку у таких людей присутствует оба начала, подобно «Инь» и «Ян», в зависимости от возраста отчетливо проявляется одно из них."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Кроме того экстраверты могут быть эмоционально устойчивыми или неустойчивыми, что соответствует типу типу темперамента сангвиник и холерик."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Экстраверсия"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Экстраверсия — это свойство личности направлять свои усилия наружу, на взаимодействие с другими людьми. Если ее задатки присутствуют в человеке, то изменить вектор поведения не составит большого труда. Если же речь идет о чистом интроверте, то ему будет крайне сложно отказаться от «внутреннего диалога» в пользу общения с окружающими."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Главное помнить, что интроверт – не диагноз, а экстраверт – не награда. Оба психологических типа имеют свои сильные стороны, при этом, не будучи лишены существенных недостатков. Но прежде чем о них говорить, определим каким образом можно понять, что перед нами экстраверт."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" Text="Как "/>
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="определить "/>
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" Text="экстраверта?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="В силу направленности на внешний мир, экстраверт «выдаст» себя намного раньше, чем кто-то вообще призадумается над этим вопросом. Мы не говорим о случаях, когда человек целенаправленно пытается скрыть свою психологическую характеристику и притворяется кем-то другим. Речь идет о самом обычном общении. Выявить экстраверта достаточно легко, ведь он всегда взаимодействует с окружающими, любит быть в центре внимания, легко и охотно заводит новые знакомства. Экстраверт первым начнет общение, будет рассказывать больше, чем слушать."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Также желательно узнать какие бывают "/>
+                        <Run FontWeight="Bold" Text="признаки экстраверта"/>
+                        <Run Text=", с тем, чтобы обнаружить их у себя или у своего собеседника."/>
+                    </Paragraph>
+                    <List MarkerStyle="Square" MarkerOffset="1">
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Любит общение и шумные компании, терпеть не может одиночество;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Чувствует себя неуютно в тишине и «четырех стенах»;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="В присутствии других заряжается энергией и хорошим настроением;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Склонен знакомиться первым, легко налаживает новые связи;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Больше говорит о себе, чем слушает других;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Достаточно легко увлекается, и также быстро может терять интерес;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Не любит копаться в самом себе;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Не всегда умеет контролировать свои эмоции;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Тщательное планирование и внимание к деталям – это явно не о нем;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Быстро принимает решение, не всегда обдумывая их;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="С легкостью отпускает негатив, забывает обиды;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Любит делиться своими переживаниями с другими;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Фантазиям предпочитает покорение окружающего мира;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Часто пишет или звонит своим знакомым;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Говорит быстро и громко, активнее жестикулирует."/>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Если ответов «да» больше, чем «нет», то велика вероятность, что перед нами экстраверт, либо мы сами обладаем этим типом личности. О том, хорошо это или плохо, поговорим далее."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF85917B" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Хорошо или плохо быть экстравертом?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Плюсы и минусы экстраверта – это вопрос далеко не однозначный. С одной стороны, быть веселым и жизнерадостным, легко заводить знакомства – явный плюс. С другой – необдуманные действия и пробелы на этапе планирования очень часто создают экстравертам неудобства. Также и разговорчивость данного психотипа может сыграть злую шутку, особенно при общении с более продуманными интровертами."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Учитывая, что экстраверты не зацикливаются на неудачах, то особых моральных проблем они не испытывают, потому и учатся на своих ошибках крайне редко. В этом заключается еще один их плюсо-минус. Нервы они себе конечно берегут, но и «на граблях танцуют» регулярно, так что «шишка» со лба сходит крайне редко. Но обо всем по порядку."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Плюсы экстраверта"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Поскольку экстраверты – это прирожденные коммуникаторы, то основная масса их преимуществ связанна именно с умением налаживать связи:"/>
+                    </Paragraph>
+                    <List MarkerStyle="Circle" MarkerOffset="1">
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Обилие товарищей и знакомых;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Успехи при трудоустройстве и развитии карьеры;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Легкое и непринужденное отношение к жизни;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Симпатия и внимание от окружающих;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Популярность у противоположного пола;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Насыщенная биография, многообразие жизненных историй;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Умение воодушевлять людей, «заряжать» их своей энергией."/>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Благодаря этим качествам, экстравертам везде открыты двери, но, порой, они закрываются, сталкиваясь с негативными сторонами этого типа личности."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Минусы экстраверта"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Поверхностность и мимолетность слишком активных людей иногда вызывает разочарование в них со стороны окружающих. Глубже понимая, кто такой экстраверт, его воспринимают уже не так радушно. Это связано со следующими минусами экстравертов:"/>
+                    </Paragraph>
+                    <List MarkerStyle="Circle" MarkerOffset="1">
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Излишняя общительность, которая порой переходит в болтливость;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Неспособность контролировать эмоции;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Регулярная смена интересов, мешающая полностью реализоваться;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Дефицит настоящих друзей;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Неумение слушать, что отталкивает собеседников;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Невнимательность к деталям, слабая подготовка;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Методичное повторение одних и тех же ошибок."/>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Невзирая даже на недостатки, многие хотят стать экстравертами или, хотя бы, перенять их сильные стороны. Насколько сложно это сделать, поговорим далее."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Можно ли стать экстравертом?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Всех интересующихся вопросом «Как стать экстравертом?» спешим обрадовать и огорчить одновременно. Экстраверт – это тип личности, зависящий от протекания многих физиологических процессов в организме. Стать экстравертом нельзя, можно ним родиться. С другой стороны, поскольку чистых психотипов практически не бывает, то даже у самого закоренелого интроверта имеются способности к экстраверсии. Просто их раскрыть и реализовать ему намного сложнее, чем выраженному экстраверту."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Но все поддается практике и тренировке. Любой, кто искренне захочет в себе что-нибудь изменить, в состоянии это сделать. Например, "/>
+                        <Run FontWeight="Bold" Text="улучшить навык общения"/>
+                        <Run Text=", пересилить свою антипатию к шумным компаниям и т.д."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Кто планирует стать экстравертом, для начала, должен понять, что такое экстраверт, проанализировать особенности его поведения. Возможно недостатки этого типа личности превысят его достоинства. Не стоит идеализировать кого-то другого. Лучше научиться видеть преимущества в самом себе, в таком, каким есть. А вот "/>
+                        <Run FontWeight="Bold" Text="общаться с экстравертами придется в любом случае"/>
+                        <Run Text=" и лучше быть к этому готовым. Иначе получится примерно так – «Экстраверт, кто это?» – А пока ответ найдется, уже будет допущено миллион ошибок в диалоге."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Как общаться с экстравертом?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="На самом деле, общение с экстравертом – не проблема, учитывая тот факт, что он первым это самое общение начнет. Следует помнить, что данный психотип крайне эмоционален и разговорчив. Так что, перебивать экстраверта не стоит. В принципе, это и не выйдет сделать. Лучше отпустить диалог в свободное русло, дружелюбно предоставив ему свои уши."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Одно дело, дружить с экстравертом или быть его коллегой по работе. Совершенно другое – строить с таким человеком отношения. Хотя противоположности притягиваются, так что экстраверт обретет в интроверте верного слушателя или зрителя. Но у них может оказаться "/>
+                        <Run FontWeight="Bold" Text="очень мало совместных точек пересечения"/>
+                        <Run Text=". Если экстраверт будет мчаться на очередную вечеринку, интроверт предпочтет остаться дома и укутавшись теплым пледом, смотреть телевизор. Также будет отличаться их отношение друг к другу. Интроверт склонен привязываться надолго, а вот экстраверт более поверхностен. Это не обязательно означает, что он будет изменять, но, чтобы сохранить внимание и чувства экстраверта, его партнеру придется быть всегда в тонусе, развиваться вместе с ним."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="А вообще, все мы люди и между нами не так много отличий. Темперамент, характер, психотип, цвет кожи или политические взгляды никогда еще не мешали настоящей крепкой дружбе или любви."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Я экстраверт!"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Как жить экстраверту? Точно не тихо и спокойно. Жизнь экстраверта полна приключений, общения, драйва. Так что, следует быть собой, при этом уважая других людей. Экстравертам желательно научиться не перегружать знакомых своей энергетикой. Также им не стоит воспринимать «ленивыми задницами», всех тех, кто может хоть пару минут усидеть на одном месте."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Еще важнее экстравертам "/>
+                        <Run FontWeight="Bold" Text="переосмыслить свое отношение к дружбе"/>
+                        <Run Text=". Ведь настоящие друзья тысячами не исчисляются. Порой хвастаясь обилием друзей, на поверку экстраверты оказываются совершенно одинокими людьми. В этом им лучше перенять манеру интровертов, и выбрать в свое окружение действительно самых достойных."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="А вообще, переживать по поводу своей экстраверсии не стоит. Лучше найти конструктивное применение этим талантам и направить свою энергию в правильное русло."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="25,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Экстраверт – это настоящий генератор энергии и веселья. С ним вряд ли соскучишься. Но и включить режим «без звука» тоже не удастся. Зная это, стоит сразу настроиться на жизнь, богатую эмоциями и приключениями. А вот, экстравертам, желательно попытаться обуздать свою натуру и научиться «дозировать» свой вклад в диалоге. В целом, быть экстравертом – очень даже не плохо, также, как и обзавестись таким человеком в своем окружении."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="13,0,20,0" TextAlignment="Justify"/>
+                </FlowDocument>
+            </RichTextBox>
+            <RichTextBox x:Name="Intr_text" HorizontalAlignment="Left" IsReadOnly="True"  Height="689" VerticalAlignment="Top" Width="778" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="White" Margin="-4,-4,0,-4" FontFamily="Stencil" FontSize="16" Visibility="Hidden">
+                <FlowDocument>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                        <Run Text=""/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" Text="Кто такой "/>
+                        <Run Text=" "/>
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="интроверт"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Интроверт — это человек, погруженный в свой "/>
+                        <Run FontWeight="Bold" Text="внутренний мир"/>
+                        <Run Text=". Этот тип личности отличается большей ориентацией на собственные переживания и мысли. Ему сложнее, чем "/>
+                        <Run FontWeight="Bold" Text="экстраверту"/>
+                        <Run Text=", налаживать социальные связи, устанавливать контакты с окружающим миром."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Но не все так просто. Не стоит путать интровертов с ленивыми людьми или мизантропами. Ведь, лень — это нежелание что-то делать, мизантропия — асоциальное поведение, а вот интроверсия — это особенность мышления человека. Потому, если кто-то говорит — «я интроверт», надо еще разобраться так ли это. Возможно, ему просто удобнее «прикрыться» таким словом, на самом деле отлынивая от работы или ответственности."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Настоящий интроверт — это "/>
+                        <Run FontWeight="Bold" Text="далеко не ленивый человек"/>
+                        <Run Text=", просто его усилия направлены на самоанализ, созерцание внутреннего мира. Такие люди очень часто становятся философами, изобретателями, учеными, писателями, поэтами, что требует не меньшего труда, чем коммуникация с другими."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Интроверт и экстраверт"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Чистые психотипы встречаются крайне редко. Чаще всего в человеке объединены интроверт и экстраверт — это обусловлено наследственностью, через которую передаются признаки родителей. В разном возрасте активизируется тот или иной психотип, что зависит от условий жизни и ее ритма."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Впервые на существование двух противоположных типов личности обратил внимание швейцарский "/>
+                        <Run FontWeight="Bold" Text="психолог Карл Юнг"/>
+                        <Run Text=", который разработал концепцию аналитической психологии. Благодаря его трудам люди узнали, кто такие интроверты и экстраверты. Личность первых оказалась направлена «в себя», а вторые, напротив, ориентировались на взаимодействие с внешним миром."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Дальнейшие исследования только расширили наши знания об интровертах, выделив несколько их типов. Изучая психотипы, британский ученый Ганс Айзенк установил, что интроверты — собирательное понятие, которое, в свою очередь делится на ряд типов. Они могут быть эмоционально устойчивыми или неустойчивыми, что соответствует "/>
+                        <Run FontWeight="Bold" Text="флегматичному или меланхоличному темпераменту"/>
+                        <Run Text="."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="В зависимости от того флегматик человек или меланхолик, его интроверсия будет проявляться по-разному. В первом случае, он будет отрешен от внешнего мира, а во втором – отличаться излишней ранимостью и переживаниями."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text=""/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" Text="Как определить интроверта"/>
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" Text="?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Ярко выраженные психотипы встречаются редко. В основном совмещаются оба типа личности, просто в разные периоды они выражены не одинаково. Иногда одно из качеств развивается активнее. "/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Помимо этого, желательно проанализировать свое поведение, попытаться обнаружить следующие "/>
+                        <Run FontWeight="Bold" Text="признаки интроверта"/>
+                        <Run Text=":"/>
+                    </Paragraph>
+                    <List MarkerStyle="Square" MarkerOffset="1">
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Ощущает одиночество даже среди людей;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Избегает скопления народа, шумные компании;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Не спешит заводить новые знакомства;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Если привязывается к человеку, то надолго;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Умеет дружить, отличается верностью;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Склонен к самоанализу, философским размышлениям;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Предпочитает слушать, а не говорить;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Любит фантазировать;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Тщательно планирует свои действия наперед;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Терпелив, умеет контролировать эмоции;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Отличается наблюдательностью, внимателен к деталям;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Долго «держит» обиды, неприятные воспоминания."/>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Если результаты теста совпадут с большинством перечисленных признаков, то можно утверждать, что человек — интроверт."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF85917B" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Хорошо или плохо быть интровертом?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Поговорим о плюсах и минусах интроверта. Некоторые моментально скажут, что интроверт — это тихоня, скромный и застенчивый человек, который боится «нос из дому» высунуть, абсолютно пассивный, склонный слушаться других. Один сплошной минус. Но так ли это на самом деле? Каково же будет удивление тех, кто узнает, что "/>
+                        <Run FontWeight="Bold" Text="большая часть известных лидеров и эпатажных артистов"/>
+                        <Run Text=" – именно интроверты."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Например, всемирно известными интровертами являются Барак Обама, Хиллари Клинтон, Уоррен Баффет, Марк Цукерберг, Билл Гейтс, Элон Маск, Майкл Джордан, Стивен Спилберг, Киану Ривз, Леди Гага, Джонни Депп и многие другие. Из исторических личностей стоит вспомнить Исаака Ньютона, Чарльза Дарвина, Альберта Эйнштейна, Махатму Ганди и Авраама Линкольна."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="На самом деле, все достаточно логично. Интроверты, в отличие от экстравертов, "/>
+                        <Run FontWeight="Bold" Text="не так сильно зависят от чужого мнения"/>
+                        <Run Text=". У них своя собственная система ценностей. Они способны двигаться к поставленной цели вопреки мнению окружающих. А это один из критериев лидерства. Интроверты умеют брать ответственность на себя. Они очень самодостаточны. Отличаются усидчивостью, лучше сосредотачиваются и способны тщательно готовиться к предстоящей работе."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Если кто-то уже задумался над тем, как стать интровертом, не стоит спешить с решением, ведь не лишены интроверты и недостатков. В первую очередь, их минусы связаны с "/>
+                        <Run FontWeight="Bold" Text="нежеланием выстраивать социальные связи"/>
+                        <Run Text=". Интроверты могут пренебрегать чужим мнением, что порой играет с ними злую шутку. Кроме того, люди с психотипом «интроверт» хуже адаптируются к внешним изменениям, медленнее продвигаются по карьерной лестнице, им сложнее найти друзей. При этом сами по себе интроверты – очень надежные и хорошие друзья."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Можно ли стать интровертом?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Допустим, какой-нибудь экстраверт решил «переквалифицироваться» в интроверта. Способен ли он это сделать? И самое главное, нужно ли ему это? Что такое интроверт глазами другого типа личности? Скорее всего, для классического экстраверта он будет замкнутым, нелюдимым, скучным."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                        <Run Text="Так зачем же тогда менять свой тип личности, даже если бы это было возможно? Примерный ход мыслей такого человека выглядит следующим образом. Скорее всего, он терпит неудачи из-за свой поверхностности и гиперактивности. Задает сам себе вопрос, почему так происходит? Ищет ответы в Интернете. Узнает, кто такой интроверт и экстраверт. Понимает, что принадлежит ко второму психотипу. Собирает информацию, чтобы лучше узнать личностный тип «интроверт». В определенный момент начинает "/>
+                        <Run FontWeight="Bold" Text="идеализировать интровертный психотип"/>
+                        <Run Text=" и пытается перестроить свой темперамент и личность."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                        <Run Text="Стоит ли это делать, и "/>
+                        <Run FontWeight="Bold" Text="насколько у него велики шансы стать интровертом"/>
+                        <Run Text="? Считается, что темперамент и психотип закладываются до рождения. Они зависят от анатомических и физиологических особенностей человека. То есть, корректироваться они могут только в связи с фундаментальными изменениями в организме. Простыми тренировками, либо упражнениями, тип личности не изменишь."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Развитие интроверсии"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Развить способность к интроверсии можно. Подобно занятиям спортом при различных типах телосложения. Накачаться может как эктоморф (худенький), так и мезоморф (крепыш), но первому это будет сделать намного сложнее. Также и экстраверт способен стать более вдумчивым, щепетильным и усидчивым, но у интроверта это выйдет лучше."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                        <Run Text="Достаточно выбрать те качества интровертов, которые желательно перенять на себя, а далее методично практиковаться в их развитии. Больше слушать, чем говорить, чаще анализировать свою жизнь, планировать поступки и т.д. Тем более что в одном человеке часто уживается интроверт и экстраверт, так что развить сильные стороны обоих психотипов реально. Куда сложнее объединить коллектив, в котором присутствуют интроверты и экстраверты."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Как общаться с интровертом?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="К интровертам, в связи с особым типом мышления, необходимо найти свой подход. В первую очередь, следует помнить, что интроверт крайне ревностно относится к своему личному пространству. Он не готов пускать туда всех подряд. Заслужить доверие интроверта – длительный и тернистый путь. Но и результат таких усилий превзойдет все ожидания, ведь интроверты – верные и надежные спутники жизни."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Во-вторых, желательно подбирать слова, относиться с уважением к внутреннему миру интроверта. "/>
+                        <Run FontWeight="Bold" Text="Они долго помнят обиды"/>
+                        <Run Text=", и если их «задеть за живое», то одним «прости» дело не закончится."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="В-третьих, интроверты не любят суматоху и скопления людей, бессмысленно тянуть их на шумные вечеринки, митинги и массовые гуляния. Если планируете встречу с интровертом, лучше пригласить его на природу, в гости или тихое укромное место, где-нибудь в уютном заведении."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Это советы по общению с интровертами. А что делать, если сами склонны к интроверсии?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Я интроверт!"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Прежде всего, интроверт – это не психологическое отклонение, а особый стиль мышления. Ничего плохого в нем нет. Если так разобраться, то экстраверты даже чаще попадают в неприятные ситуации, в силу своей поверхностности и энергичности. Намного хуже, когда «язык опережает мышление». В этом спокойные люди явно выигрывают."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Так что, если принадлежите к интровертному типу личности, то драматизировать не стоит. Лучше проанализировать, что именно "/>
+                        <Run FontWeight="Bold" Text="мешает добиться результатов "/>
+                        <Run Text="и исправить только это. Если у интроверта развиты навыки креативности или логики – это явно не недостаток. Умение планировать, также пригодиться всегда и везде. Значит, их корректировать не стоит. А вот излишнюю замкнутость и ранимость желательно пересилить."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Для разнообразия "/>
+                        <Run FontWeight="Bold" Text="можно проявить инициативу "/>
+                        <Run Text="в общении с интересным человеком. Первому написать или позвонить, пригласить на прогулку. Если даже последует отказ – не страшно. Куда хуже – не попробовать, если этого звонка на самом деле ждут."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Также стоит охотнее впускать других в свою жизнь. Просто желательно быть осмотрительным, но и обижать других «закрытыми дверями» – не выход. В конце концов, мир полон хороших людей, поэтому нет смысла изолироваться от них."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Самое важное – не зацикливаться на обидах, ведь многие из них возникают практически на ровном месте. Иногда человек обижает кого-то случайно, не желая этого. Смысл делать трагедию из-за пустяка? "/>
+                        <Run FontWeight="Bold" Text="Даже самый ярко выраженный интроверт способен простить"/>
+                        <Run Text=". Для этого ему достаточно переключиться на что-нибудь хорошее и просто постараться не вспоминать неприятные инциденты."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Размышляя по поводу того, кто такой интроверт, все чаще можно поймать себя на мысли об успешности такого человека. Но любое преимущество имеет свою цену. Для того чтобы интроверт смог в полной мере реализовать свой потенциал, ему необходимо научиться контактировать с другими, забывать плохое. А окружающим следует помнить, что любой интроверт – это довольно ранимый человек, поэтому желательно с уважением относиться к нему и его внутреннему миру."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify"/>
+                </FlowDocument>
+            </RichTextBox>
+
+            <RichTextBox x:Name="Sang_text" HorizontalAlignment="Left" IsReadOnly="True"  Height="689" VerticalAlignment="Top" Width="778" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="White" Margin="-4,-4,0,-4" FontFamily="Stencil" FontSize="16" Visibility="Hidden">
+                <FlowDocument>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                        <Run Text=""/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Кто такой сангвиник"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Сангвиник — это тип темперамента, отличающийся энергичностью и активностью, высокой работоспособностью и позитивным взглядом на мир. Название происходит от древнегреческого слова «сангуа», которое обозначает кровь. Именно преобладанием в организме этого «жизненного сока» Гиппократ и Гален объясняли жизнерадостное поведение сангвиников."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Достаточно четко разделив людей на четыре психологических типажа, философы древности точно определили, кто такой сангвиник, и что можно от него ожидать. Они акцентировали внимание на следующих особенностях поведения сангвиников: "/>
+                        <Run FontWeight="Bold" Text="подвижность, энергичность, работоспособность, выносливость, общительность"/>
+                        <Run Text="."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Отдельно стоит упомянуть их чувство юмора, умение легко переживать сложные ситуации, позитивное мышление. Сангвиники — это хорошие коммуникаторы, руководители, творческие личности. Будучи прирожденными лидерами, они склонны заниматься предпринимательской деятельностью."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Много сангвиников среди артистов, композиторов, писателей, менеджеров, учителей, политиков, бизнесменов. К известным сангвиникам относятся Наполеон Бонапарт, Александр Иванович Герцен, Вольфганг Амадей Моцарт, Луи Пастер, Мария Склодовская-Кюри, Антонио Вивальди, Михаил Юрьевич Лермонтов, Марк Твен, Оноре де Бальзак, Владимир Ильич Ульянов (Ленин), Франклин Рузвельт, Рональд Рейган, Билл Клинтон."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text=""/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" Text="Как распознать сангвиника?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Какие критерии помогают узнать, что перед нами сангвиник? Характеристика этого типа темперамента, приведенная ранее, уже позволяет сформировать представления о нем. "/>
+                        <Run FontWeight="Bold" Text="Веселый, жизнерадостный, не «вешающий нос» "/>
+                        <Run Text="даже в сложных ситуациях. О сангвинике часто говорят, как о "/>
+                        <Run FontWeight="Bold" Text="душе любой компании"/>
+                        <Run Text=", как о человеке, умеющем поднять настроение, вдохновить на подвиги или свершения. Распознать его помогут довольно красноречивые признаки сангвиника:"/>
+                    </Paragraph>
+                    <List MarkerStyle="Square" MarkerOffset="1">
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Коммуникабельность, разговорчивость, инициативность;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Дружелюбие, отзывчивость, непринужденность в общении;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Позитивный взгляд на мир, оптимизм;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Умение приспосабливаться к изменяющимся условиям;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Стрессоустойчивость, не конфликтность;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Развитое чувство юмора, артистизм;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Лидерские задатки, способность вдохновлять других;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Переменчивость интересов и желаний, непостоянство;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="В основном приподнятое настроение;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Повышенная работоспособность, азарт к интересному делу."/>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Обнаружив в собеседнике большинство из этих пунктов, можно смело утверждать, что он сангвиник. Свой темперамент определить сложнее. "/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF85917B" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Характеристика сангвиника: плюсы и минусы"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Легкость и непринужденность сангвиника в отношении к жизни имеет свои позитивные и негативные стороны, которые, чаще всего, отражаются на окружающих. Так, "/>
+                        <Run FontWeight="Bold" Text="преимущества сангвиника"/>
+                        <Run Text=" связаны с устойчивостью его психики, оптимизмом, жизнерадостностью, лидерскими задатками, умением вдохновлять и мотивировать, спокойствием в стрессовых условиях."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="В связи с этим, сангвиники менее подвержены психическим заболеваниям, они лучше адаптируются к изменяющимся условиям, длительное время не теряют работоспособность, способны вести за собой других, будучи всегда востребованы в коллективе. Эти плюсы облегчают жизнь самим сангвиникам, но порой играют злую шутку с их друзьями и любимыми."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Дело в том, что "/>
+                        <Run FontWeight="Bold" Text="недостатки сангвиника "/>
+                        <Run Text="ощущаются именно теми людьми, которые строят с ними деловые или романтические отношения. Оптимизм и жизнерадостность этого типа темперамента соседствуют с легкомыслием и непостоянством, склонностью к самолюбивости, развитием «звездной болезни». Сангвиники не всегда знают чувство меры, могут быть подвержены азарту, а также очень часто принимают решения впопыхах, не предвидя их последствий. Это совершенно не означает, что все сангвиники склонны к необдуманным поступкам или изменам."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Безусловно, этот тип темперамента предусматривает легкость в налаживании и прекращении связей, но огромную роль в формировании личности играет еще и воспитание человека. Так что, все индивидуально. В сангвинике можно найти доброго и веселого человека, который будет всей душой предан интересам фирмы, дружескому коллективу либо одной единственной и неповторимой девушке."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Отношения с сангвиником"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="На первый взгляд, жизнерадостный сангвиник кажется идеальным собеседником и располагает к диалогу. Сложности могут возникнуть на этапе более тесного общения. Это зависит от совместимости различных типов темперамента."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Весьма удачным станет союз сангвиника и флегматика, в котором уравновешенность последнего будет гармонировать с дружелюбием первого. Безусловно, порывистость и энергичность периодически начнут сталкиваться с инертностью, но серьезных конфликтов это вызвать не должно."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" Text="Два сангвиника "/>
+                        <Run Text="вообще пара. Эмоциональные вспышки, которые будут моментально сглаживаться обоюдным подшучиванием, никогда не заставят их заскучать. Главное, чтобы вектор движения их энергии совпал и тогда влюбленные, держась за руки, сломя голову понесутся покорять новые вершины."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Чуть сложнее наладить диалог сангвинику и холерику. С одной стороны, оба партнера обладают мощной энергетикой. С другой – оба стремятся к лидерству и доминированию. Соперничество ведет к обоюдному прогрессу, но порой утомляет. Так что, долгосрочность таких отношений, прежде всего, зависит от умения договариваться и идти на компромисс."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Чувственный меланхолик найдет в сангвинике достаточно добродушную «каменную стену», уступая ему главные позиции в семье. Но это в случае, если они вообще познакомятся. Ведь сангвиник может просто не заметить тихоню, а меланхолик посчитает его чересчур суетливым и взбаламученным."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="А вообще, ежегодно образуются миллионы пары. И насколько их отношения будут крепкими, зависит от сотен факторов, так что не стоит «клеймить», либо, наоборот, возвышать человека исключительно по его типу темперамента. Следует всегда смотреть шире и глубже. Ведь иногда люди бывают вместе не благодаря, а вопреки."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Воспитание сангвиника"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" Text="Шустрый весельчак и непоседа"/>
+                        <Run Text=". Эти слова первыми приходят на ум в попытке описать маленького сангвиника. Поэтому родителям не стоит ожидать истерики по малейшему поводу. Но обуздать энергию своего ребенка придется. Иначе творческой площадкой для него станет вся квартира, включая дорогие обои и гардины."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Следует как можно быстрее распознать таланты малыша, понять его склонности и интересы. Далее останется направить весь его потенциал в конструктивное русло, "/>
+                        <Run FontWeight="Bold" Text="не давая ему заскучать даже на минуту"/>
+                        <Run Text=". Не стоит забывать о лидерских задатках сангвиников. Крики, запреты и наказания вызовут внутренний протест у ребенка. Лучший способ что-то ему объяснить – совместное творчество или игра."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Судя по данной статье, настоящая удача – узнать, что ты сангвиник. Описание этого типа темперамента показывает наличие многих качеств, свойственных лидерам. Но для того, чтобы сангвиник смог реализоваться, ему стоит подавить негативные проявления своей натуры. В первую очередь, это касается мимолетности и поверхностности. В любом случае, сангвиник – это очень харизматичный человек, с которым никогда не будет скучно."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify"/>
+                </FlowDocument>
+            </RichTextBox>
+
+            <RichTextBox x:Name="Holr_text" HorizontalAlignment="Left" IsReadOnly="True"  Height="689" VerticalAlignment="Top" Width="778" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="White" Margin="-4,-4,0,-4" FontFamily="Stencil" FontSize="16" Visibility="Hidden">
+                <FlowDocument>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                        <Run Text=""/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Кто такой холерик"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Холерик — это эмоционально вспыльчивый и чрезвычайно активный тип темперамента, склонный к лидерству и доминированию. Само слово «холерик» древнегреческого происхождения. По представлениям Гиппократа, который согласно преобладающему «жизненному соку» выделил четыре типа темперамента, у холериков доминирует «желтая желчь». Языком оригинала она именуется «холе». Отсюда и пошло название."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Несмотря на то, что психология постоянно развивается, регулярно пересматривая взгляды на мир, данный подход к классификации темперамента не теряет своей актуальности до сих пор. Кто такие холерики, достаточно четко было определено еще во времена Гиппократа. "/>
+                        <Run FontWeight="Bold" Text="Смелые, решительные, несдержанные и задорные"/>
+                        <Run Text=" холерики всегда отличались ярко выраженными лидерскими качествами, брали инициативу в свои руки и стремительно двигались к своей цели. При этом, им крайне сложно контролировать свои эмоции, что проявляется в резкой смене настроения и вспыльчивости."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Исчерпывающая характеристика холерика позволила ученым выявить представителей этого типа темперамента не только среди ныне живущих людей, но и проанализировав исторические личности. Так, из "/>
+                        <Run FontWeight="Bold" Text="известных личностей к холерикам относятся "/>
+                        <Run Text="Дмитрий Иванович Менделеев, Александр Васильевич Суворов, Петр І Алексеевич, Александр Сергеевич Пушкин, Людвиг Ван Бетховен, Чапаев Василий Иванович, Сальвадор Дали, Дональд Трамп, Опра Уинфри, Билл Гейтс и др."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Поскольку в одном человеке могут сочетаться несколько типов темперамента, то встретить ярко выраженного холерика удается не так и часто. Но в случае, если он попадется, вряд ли кто-нибудь усомниться, что перед ним холерик. Описание основных критериев, позволяющих распознать этот тип темперамента приведено в следующем разделе."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text=""/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" Text="Как распознать холерика?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Некоторые авторы утверждают, что можно определить холерика и по внешнему виду. Согласно их мнения, люди с этим типом темперамента отличаются худощавым телосложением и прочими признаками. Но пропорции человеческого тела зависят от целого ряда физиологических процессов. Также и его вспыльчивость или нервозность. Так что, стоит разграничивать врожденные особенности человека и его здоровье."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Лучше выявить холерика, опираясь хотя бы на несколько критериев:"/>
+                    </Paragraph>
+                    <List MarkerStyle="Square" MarkerOffset="1">
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Эмоциональная нестабильность;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Ускоренная и громкая речь;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Резкие движения;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Нежелание сидеть на одном месте;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Активная жестикуляция;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Стремление к лидерству;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Социальная активность;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Умение отстаивать свое мнение;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Гиперреактивность и энергичность;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Невосприятие рутины и монотонности."/>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Если основная масса этих пунктов совпадает с характеристикой конкретного человека, то можно утверждать, что он обладает темпераментом холерика."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF85917B" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Характеристика холерика: плюсы и минусы"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="К преимуществам этого типа темперамента относится высокая социальная активность и перспектива занять доминирующую позицию. Холерики — прирожденные лидеры, которые "/>
+                        <Run FontWeight="Bold" Text="умеют добиваться успеха сами"/>
+                        <Run Text=", и приводят к нему других. Они настолько самоотверженно умеют идти к намеченной цели, что «заражают» энтузиазмом всех вокруг."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" Text="Холерики умеют и любят руководить"/>
+                        <Run Text=". Их вспыльчивость имеет и позитивную сторону, ведь такие люди никогда не копят в себе негатив и обиду. Они моментально выплескивают свои эмоции на других, но также быстро и успокаиваются. Это помогает не затягивать «разбор полетов», оперативно решая производственные проблемы."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Не лишен темперамент холерика и недостатков, которые вызваны его несдержанностью. Особенно это ощутимо при контакте холериков с меланхоликами, которые категорически не приемлют столь импульсивное поведение. Из-за повышенной эмоциональности холерик может поссорится и обидеть кого-то, даже не желая этого. Если тот человек не настолько отходчив, то холерику придется еще долго извиняться, что не сильно свойственно его натуре."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Отношения с холериком"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Если принимать за истину, деление людей на четыре психологических типа, описанных еще Гиппократом, то вариантов взаимоотношений может быть всего четыре: с меланхоликом, холериком, сангвиником и флегматиком."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="На первый взгляд, кажется, что не уживется с ним только меланхолик. Холерику будет не скучно, сангвинику – по приколу, а флегматику – по барабану. Но в действительности все не так однозначно. "/>
+                        <Run FontWeight="Bold" Text="В случае с меланхоликом"/>
+                        <Run Text=", союз удастся, если он будет принимать властную позицию холерика, а тот, в свою очередь, опекать и заботиться о меланхолике."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" Text="Если темпераменты совпадают"/>
+                        <Run Text=", то это чревато «фейерверками» чувств и эмоций. Для такой пары ежедневная «буря в стакане» обеспечена. Но крепкие отношения получатся только в случае периодического отдыха друг от друга."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" Text="Сангвинику и холерику "/>
+                        <Run Text="всегда будет чем заняться. Оба типа темперамента активны и открыты для общения. Чувство юмора позволит амортизировать эмоциональные всплески, сглаживая острые углы."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="У "/>
+                        <Run FontWeight="Bold" Text="флегматика"/>
+                        <Run Text=" больше всего шансов создать крепкие отношения с холериком. Здесь срабатывает житейская мудрость, согласно которой – противоположности притягиваются. Главное – взаимное уважение каждого участника этого союза, соблюдение его личного пространства."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify"/>
+                </FlowDocument>
+            </RichTextBox>
+
+            <RichTextBox x:Name="Fleg_text" HorizontalAlignment="Left" IsReadOnly="True"  Height="689" VerticalAlignment="Top" Width="778" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="White" Margin="-4,-4,0,-4" FontFamily="Stencil" FontSize="16" Visibility="Hidden">
+                <FlowDocument>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                        <Run Text=""/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Кто такой флегматик"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Флегматик — это самый уравновешенный тип темперамента, отличающийся спокойствием, инертностью. Согласно представлениям Гиппократа и Галена, у флегматиков из «жизненных соков» преобладает лимфа или на древнегреческом – «флегма». Отсюда пошло название."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Древнегреческие мудрецы достаточно точно описали, кто такой флегматик. Этот "/>
+                        <Run FontWeight="Bold" Text="тип людей с устойчивым настроением, не подверженных эмоциональным всплескам"/>
+                        <Run Text=". Они медлительны, постоянны в своих предпочтениях, сдержаны, обладают высоким интеллектом, хорошей памятью. Флегматики не склонны к риску, всегда обдумывают последствия своих действий."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Можно ли считать флегматика ленивым? Вопрос риторический. Скорее – энергосберегающим. Ведь отсутствие суеты совершенно не означает, что человек ленится. Поскольку "/>
+                        <Run FontWeight="Bold" Text="флегматики отличаются аналитическим умом и сообразительностью"/>
+                        <Run Text=", то среди них много ученых, философов, исследователей. Например, среди известных флегматиков Галилео Галилей, Иммануил Кант, Антони ван Левенгук, Александр Порфирьевич Бородин, Анатолий Константинович Лядов, а также Киану Ривз, Стивен Сигал, Скарлетт Йоханссон, Николь Кидман."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Характеристика флегматика мало изменилась со времен древних греков. Флегматичные люди "/>
+                        <Run FontWeight="Bold" Text="склонны к щепетильной, монотонной деятельности"/>
+                        <Run Text=". Их работоспособности и усидчивости могут позавидовать остальные типы темперамента. При этом, работа, связанная с импровизацией и постоянными изменениями, таким людям подойдет меньше. Также, не лучший выбор для флегматика роль продавца или менеджера по продажам, где необходимо постоянное общение. Люди с таким темпераментом будут очень полезны в администрировании, поддержании стабильности на предприятии."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text=""/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" Text="Как распознать флегматика?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Как понять, что перед нами флегматик? Характеристика этого темперамента достаточно полно представлена в предыдущем разделе, но все же акцентируем внимание на самые основные критерии флегматичности. "/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="В случае, когда необходимо понять, кем является наш собеседник, желательно уделить внимание следующим деталям его поведения. Итак, "/>
+                        <Run FontWeight="Bold" Text="признаки флегматика"/>
+                        <Run Text=":"/>
+                    </Paragraph>
+                    <List MarkerStyle="Square" MarkerOffset="1">
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Спокойствие, умиротворенность;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Добродушие, сглаживание конфликтов;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Рассудительность, склонность к анализу ситуации;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Плавная, размеренная речь;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Минимальная жестикуляция и мимика;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Умеренность во всех своих поступках, действиях;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                                <Run Text="Неприхотливость, уживчивость с другими."/>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Согласно пунктам, флегматик – это идеальный сосед, коллега, помощник. Он не то что мешать не будет, его «днем с огнем не найдешь». При этом, в плане трудолюбия и исполнительности флегматики на первом месте."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Помимо поведенческих качеств, некоторые психологи уверяют, что данный тип темперамента можно распознать по внешним признакам. Например, им свойственна "/>
+                        <Run FontWeight="Bold" Text="склонность к избыточному весу, округлость очертаний и форм, плавность походки, медлительность речи и движений"/>
+                        <Run Text=". Даже без проблем с жировой тканью, они отличаются массивностью телосложения"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF85917B" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Характеристика флегматика: плюсы и минусы"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Как и все в этом мире, флегматичный тип темперамента имеет свои плюсы и минусы. К "/>
+                        <Run FontWeight="Bold" Text="явным преимуществам флегматиков "/>
+                        <Run Text="относятся:"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <List MarkerStyle="Square" MarkerOffset="1">
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Упорство, целеустремленность, методичное следование к намеченной цели;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Повышенная работоспособность, что позитивно сказывается на отношениях в трудовом коллективе;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Стрессоустойчивость и неконфликтность;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Терпеливость, умение ждать подходящий момент;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Эмоциональная стабильность, комфорт для себя и окружающих."/>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Преимущества впечатляют, но есть и своя «ложка дегтя», которая определяет "/>
+                        <Run FontWeight="Bold" Text="недостатки флегматика"/>
+                        <Run Text=":"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <List MarkerStyle="Square" MarkerOffset="1">
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Сложности в приспособлении, адаптации к изменяющимся условиям;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Склонность к апатии, вялости;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Затрудненная коммуникация с людьми;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Скупость на эмоции, закрытость от мира;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Инертность, которая порой мешает самореализации."/>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Зная недостатки данного типа темперамента, можно попытаться их подкорректировать, либо актуализировать позитив"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Отношения с флегматиком"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="В отношениях с флегматиком сложнее всего эти самые отношения начать. Поскольку такие люди крайне неохотно впускают кого-либо в свою жизнь. Зато, если уже впустили, то отпускают еще дольше. Поэтому, выстраивая отношения либо дружбу с флегматиками, можно рассчитывать на искренность, стабильность, ответственность и спокойствие. Именно так, ведь флегматичные люди вряд ли обрадуются ежедневным тусовкам или драйву."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Они "/>
+                        <Run FontWeight="Bold" Text="предпочтут укутаться пледом и посидеть вдвоем дома"/>
+                        <Run Text=", чем посетить шумную вечеринку или прыгнуть с парашютом. Зато, их половинка может быть уверена в верности своего избранника. В ответ, не стоит испытывать терпение и добродушие флегматика. Их чрезмерная вялость и инертность порой преувеличена. Так, Йосиф Сталин обладал именно флегматичным темпераментом, но вряд ли кто-нибудь в здравом сознании решился бы его провоцировать на конфликт. Этот же пример показывает, что не всегда флегматики склонны отдавать лидерство другому человеку."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Если разбирать отношения в зависимости от типа темперамента, то наилучшим сочетанием являются противоположности: флегматик — холерик. Первый подпитывается энергетикой партнера, а второй находит в нем тихую и уютную «гавань». Если объединяются два флегматика, то в целом им будет довольно комфортно, но, со временем, они могут заскучать. Удачным союзом считается пара флегматика и сангвиника, который также своим юмором и активностью подзаряжает партнера недостающей энергией. Хуже всего строить отношения флегматику с меланхоликом, ведь они будут все время друг друга раздражать. Одному будет противна повышенная «сопливость», а второму холод и безучастность партнера."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="А вообще, все это довольно условно. Во-первых, ярко выраженные темпераменты встречаются не часто. Во-вторых, отношения формируются под влиянием целого ряда факторов. В-третьих, каждый сам выбирает с кем ему общаться, дружить, строить семью"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Воспитание флегматика"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Ребенок флегматик — это радость всех его бабушек или дедушек. Спокойный, уравновешенный, в неприятности не попадает, по заборам не лазит, за голубями не гоняется. Самое главное – он "/>
+                        <Run FontWeight="Bold" Text="никогда не капризничает по пустякам"/>
+                        <Run Text=". В этих «плюсах» кроется определенная угроза, ведь такой ребенок может вырасти чрезвычайно пассивным, инфантильным человеком, у которого не будет своего собственного мнения или убеждений."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Потому маленького флегматика желательно понемногу «растормошить». Но делать это следует плавно, понемногу, без насилия над личностью. Желательно заинтересовать его каким-либо полезным хобби, приобщить к спорту, показать преимущества от налаживания социальных связей."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Кто бы, что не говорил, но флегматик – это весьма удачливый тип темперамента, которым порой обладают первоклассные руководители. Все зависит от правильного воспитания и соответствующей социальной среды. Флегматики "/>
+                        <Run FontWeight="Bold" Text="становятся верными спутниками жизни"/>
+                        <Run Text=", надежными друзьями или коллегами. Они не распыляются, тем самым позволяя сохранять целостность любой затеи, проекта, да и вообще коллектива. Благодаря флегматикам мы не забываем свои традиции, при этом целеустремленно двигаясь в будущее."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify"/>
+                </FlowDocument>
+            </RichTextBox>
+            <RichTextBox x:Name="Melan_text" HorizontalAlignment="Left" IsReadOnly="True"  Height="689" VerticalAlignment="Top" Width="778" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="White" Margin="-4,-4,0,-4" FontFamily="Stencil" FontSize="16" Visibility="Hidden">
+                <FlowDocument>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify">
+                        <Run Text=""/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Кто такой меланхолик"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Меланхолик — это тип темперамента, отличающийся повышенной ранимостью и впечатлительностью. Все это обусловлено склонностью к переживаниям, которые истощают психику. Меланхолики умеют переживать яркие эмоции, но вслед за этим затухают, подобно догорающей спичке, чтобы зажечься вновь после очередного эмоционального всплеска. Только, в отличие от холерика, эти эмоции направлены внутрь, а не наружу."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Характеристика меланхолика, также как и его название, были сформулированы в трудах древнегреческого целителя Гиппократа, получив дальнейшее развитие благодаря Галену. Само слово произошло от названия «жизненного сока», который доминирует у таких людей – «черная желчь» или «мелэна холе». Именно эта жидкость, согласно представлениям древних греков, вызывает "/>
+                        <Run FontWeight="Bold" Text="грусть, боязливость"/>
+                        <Run Text="."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Люди с меланхолическим типом темперамента склонны переживать «в себе», не выплескивая негатив на окружающих. Им проще замкнуться, чем устроить истерику или сору. В связи с этим, меланхолики "/>
+                        <Run FontWeight="Bold" Text="более обидчивые"/>
+                        <Run Text=", чем другие психологические типы личности. Но переживания «внутри себя» дают "/>
+                        <Run FontWeight="Bold" Text="мощный творческий потенциал"/>
+                        <Run Text=", который в разы превосходит креативность других типажей. Если бы не существовало меланхоликов, не родились бы многие шедевры мировой живописи, музыки, поэзии, архитектуры и других проявлений гения."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Среди "/>
+                        <Run FontWeight="Bold" Text="известных меланхоликов "/>
+                        <Run Text="Исаак Ньютон, Рене Декарт, Фредерик Шопен, Чарльз Роберт Дарвин, Майкл Джозеф Джексон, Эдгар Аллан По, Николай Васильевич Гоголь, Сергей Александрович Есенин, Фёдор Михайлович Достоевский, Пётр Ильич Чайковский, Лев Николаевич Гумилев, Элвис Пресли, Майкл Джексон, Билл Гейтс, Бритни Спирс, Анжелина Джоли, Мила Йовович. Так что, меланхолик – это не всегда лузер и плакса. Очень часто их психологические особенности позволяют возвыситься над окружающими, достигнув таких высот, о которых другие могут только мечтать."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text=""/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF7A876F" FontWeight="Bold" FontSize="18" Text="Как распознать меланхолика?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Общение с меланхоликом очень быстро покажет его тип темперамента, поскольку собеседник отчетливо поймет необходимость подбирать слова. Любое неосторожное высказывание "/>
+                        <Run FontWeight="Bold" Text="может спровоцировать обиду"/>
+                        <Run Text=". Кроме этого яркий индикатор меланхолика – некоторая грусть и замкнутость. Во время диалога будет складываться впечатление, что человек «загружен», переживает по поводу чего-то."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Распознать меланхолика помогает и его творческий потенциал. Очень часто этот тип темперамента встречается у людей искусства и других креативных личностей. Еще, они редко становятся «душой» компании, предпочитая быть в стороне от шумных сборищ."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Не сложно понять свою принадлежность к таким людям. Но все же, если кто-то норовит сказать «я меланхолик», желательно удостовериться в справедливости этого суждения. "/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Некоторые исследователи уверены, что распознать темперамент человека можно и сугубо анализируя его внешний вид. Например, понять, что перед нами меланхолик. Описание его включает "/>
+                        <Run FontWeight="Bold" Text="хрупкое, астеническое телосложение, вытянутые конечности, плоскую спину"/>
+                        <Run Text=" и грудную клетку, узкую талию, слабо развитую мускулатуру. Не стоит забывать, что подобной внешностью могут обладать люди, которые просто не дружат со спором, имеют проблемы со здоровьем, либо по каким-то причинам чрезмерно ограничивают себя в еде. Так что, один лишь внешний вид, без анализа поведения человека, вряд ли поможет сформировать правильное представление о его типе личности."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Foreground="#FF85917B" FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Характеристика меланхолика: плюсы и минусы"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Как и все в этом мире, каждый темперамент имеет свои противоположные «полюса», на одном из которых содержатся преимущества, а на втором – недостатки. Причем, минусы можно рассматривать, как побочный эффект тех процессов, которые обуславливают положительную сторону. Все связано со скоростью и глубиной протекания психических реакций, которые заметно истощают нервную систему."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" Text="Недостатки меланхолика в основном усложняют жизнь только ему:"/>
+                    </Paragraph>
+                    <List MarkerStyle="Square" MarkerOffset="1">
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Склонность к пессимизму, депрессии;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Низкая стрессоустойчивость;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Замкнутость, трудности в коммуникации с другими;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Пониженная работоспособность, быстрое истощение;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Застенчивость, заниженная самооценка;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Медлительность, плохая выносливость;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Пассивность, инертность."/>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="В связи с этими недостатками меланхолики редко занимают доминирующие позиции, попадая под чужое влияние. Но даже такая «ложка дегтя» не преуменьшает «бочку меда», обусловленную плюсами этого типа личности."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" Text="Преимущества меланхолика позволяют ему выделятся среди тысяч конкурентов:"/>
+                    </Paragraph>
+                    <List MarkerStyle="Square" MarkerOffset="1">
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Творческий потенциал, нестандартное мышление;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Умение видеть прекрасное в самых неожиданных проявлениях;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Постоянство в своих симпатиях;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Склонность к построению долгосрочных отношений;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Развитая чувственность, эмоциональность;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Умение анализировать и предвидеть;"/>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph LineHeight="1" TextAlignment="Justify">
+                                <Run Text="Широкое мировоззрение, развитый интеллект."/>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Так что, в лице меланхолика можно получить надежного друга, верного спутника жизни или настоящего фаната общего дела."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Отношения с меланхоликом?"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Если в паре меланхолик, характеристика таких отношений будет зависеть от темперамента его партнера. В случае идентичных типов темперамента, таким отношениям будет сложно окрепнуть, поскольку ранимость и впечатлительность обоих будет раздувать целых «двух слонов из одной мухи». Деспотичный холерик загонит меланхолика «за Можайск». Это особенно ярко проявится в случае, если холериком окажется женщина. Умиротворенный флегматик доведет меланхолика «до белого каления» своим пофигизмом. И разве что жизнерадостный сангвиник подзарядит партнера недостающей энергией и оптимизмом."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run FontWeight="Bold" FontSize="18" FontFamily="Global Sans Serif" Text="Воспитание меланхолика"/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Родителям меланхолика ни в коем случае нельзя раздувать проблему из-за этого типа темперамента у ребенка. Ведь он обуславливает огромные возможности для самореализации и успеха. Главное, "/>
+                        <Run FontWeight="Bold" Text="не сломать ранимую психику "/>
+                        <Run Text="с самого детства. Следует его воодушевлять, хвалить, но не перехваливать. Выступать инициатором общения, не навязывая диалог. Стоит проявить терпение в случае беспричинной депрессии, научившись успокаивать маленького меланхолика, переключать его внимание на более жизнерадостные моменты. Не забывать о всестороннем развитии ребенка, водить его в кружки или секции, не давая заскучать и «повесить нос»."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify" TextIndent="20">
+                        <Run Text="Родиться меланхоликом – это "/>
+                        <Run FontWeight="Bold" Text="огромный шанс стать известным и успешным"/>
+                        <Run Text=". Важно получить правильное воспитание, а во взрослые годы, посвятить себя саморазвитию. Зная свои минусы, можно их исправить или хотя бы сгладить. Меланхолик обладает огромным потенциалом, причем не только в развитии карьеры, а и построении отношений. Поэтому не стоит грустить, обнаружив этот тип темперамента у себя. Также не стоит избегать меланхоликов в общении, ведь именно они могут стать настоящими друзьями или союзниками."/>
+                    </Paragraph>
+                    <Paragraph LineHeight="1" Padding="30,0,20,0" TextAlignment="Justify"/>
+                </FlowDocument>
+            </RichTextBox>
+            <Button x:Name="Res" Content="Ещё раз" HorizontalAlignment="Left" Style="{DynamicResource DefaultButtonStyle}" VerticalAlignment="Top" Width="95" Margin="319,205,0,0" Height="35" RenderTransformOrigin="0.645,0.5" BorderBrush="#FF34BE98" Background="#FFD7F8FF" Click="Res_Click"/>
+        </Grid>
+        <Button  x:Name="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Style="{DynamicResource DefaultButtonStyle}"   Foreground="{x:Null}" Height="24" BorderBrush="{x:Null}" Margin="-1,-2,0,0" Click="Left_Click" Visibility="Hidden">
+            <Button.Background>
+                <ImageBrush ImageSource="Image/Eysenck_tempr/left.png"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>
